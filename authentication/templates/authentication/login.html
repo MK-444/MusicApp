@@ -1,0 +1,17 @@
+{% extends 'knihy/base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {% if form.errors %}
+    Spatne jmeno nebo heslo
+    {% endif %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button>Login</button>
+</form>
+
+{% endblock content %}

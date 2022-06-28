@@ -1,0 +1,214 @@
+{% extends 'home/base/base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<body class="dark-mode">
+  <div class="wrapper">
+    <div class="left-side">
+      <div class="side-wrapper">
+        <div class="side-title">Your tracks</div>
+        <div class="side-menu">
+          {% for song in Music %}
+          <div class="checkbox">
+            <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input"  />
+                <span class="checkbox-tile">
+                  <div class="holder">
+                    <div class="audio green-audio-player">
+                      <div class="play-pause-btn">
+                        <svg id="SvgjsSvg1001" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 55.127 61.182"><g data-name="Group 38215" fill="#fff" class="color000 svgShape"><g data-name="play-button-arrowhead (1)" transform="translate(30 35)" fill="#fff" class="color000 svgShape"><path class="play-pause-icon" id="playPause" d="M18.095,1.349C12.579-1.815,8.107.777,8.107,7.134v46.91c0,6.363,4.472,8.952,9.988,5.791l41-23.514c5.518-3.165,5.518-8.293,0-11.457Z" data-name="Path 18" transform="translate(-38.107 -35)" fill="#fff" class="color000 svgShape"></path></g></g></svg></g></svg>
+                      </div>
+                      <div class="controls">
+                        <span class="current-time">0:00</span>
+                        <div class="slider" data-direction="horizontal">
+                          <div class="progress">
+                            <div class="pin" id="progress-pin" data-method="rewind"></div>
+                          </div>
+                        </div>
+                        <span class="total-time">0:00</span>
+                      </div>
+                      <div class="volume">
+                        <div class="volume-btn">
+                          <svg id="SvgjsSvg1001" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M10.252 23h-3.21c-.612 0-1.157-.427-1.354-1.007l-1.591-4.993h4.615l.918 3.171c.178.552.512 1.041.962 1.408.758.618.271 1.421-.34 1.421zm9.286-21.902c-1.522.617-4.525 3.739-8.252 4.639-.802 1.099-1.285 2.882-1.285 4.846 0 1.861.438 3.553 1.165 4.662 3.941.942 6.303 3.996 8.309 4.671 2.201.742 4.529-3.468 4.525-9.422-.003-5.959-2.471-10.202-4.462-9.396zm1.704 15.472c-.719 1.656-1.987 1.685-2.72.001-.436-1.002-.731-2.772-.892-3.961h.38c1.174 0 2.125-.954 2.125-2.131s-.951-2.132-2.125-2.132h-.39c.16-1.21.538-2.947.974-3.89.764-1.652 1.941-1.68 2.72-.001 1.315 2.838 1.368 8.794-.072 12.114zm-12.435-1.57h-4.371c-2.452 0-4.436-2.047-4.436-4.5s1.984-4.5 4.436-4.5h4.444c-.561 1.3-.876 2.887-.876 4.594 0 1.627.29 3.141.803 4.406z" id="speaker" fill="#fff" class="color000 svgShape"></path></svg></g></svg>
+                      </div>
+                        <div class="volume-controls hidden">
+                          <div class="slider" data-direction="vertical">
+                            <div class="progress">
+                              <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <audio crossorigin>
+                        <source src="{{song.audio_file.url}}" type="audio/mpeg">
+                        {% comment %} <source src="{% if song.audio_file %}{{song.audio_file.url}} {% else %} {{song.audio_link}} {% endif %}" type="audio/mpeg"> {% endcomment %}
+                      </audio>
+                    </div>
+                  </div>
+                </span>
+            </label>
+          </div>
+          {% endfor %}
+          {% for song2 in User_Music %}
+          <div class="checkbox">
+            <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input"  />
+                <span class="checkbox-tile">
+                    <div class="holder">
+                        <div class="audio green-audio-player">
+                          <div class="play-pause-btn">
+                            <svg id="SvgjsSvg1001" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 55.127 61.182"><g data-name="Group 38215" fill="#fff" class="color000 svgShape"><g data-name="play-button-arrowhead (1)" transform="translate(30 35)" fill="#fff" class="color000 svgShape"><path class="play-pause-icon" id="playPause" d="M18.095,1.349C12.579-1.815,8.107.777,8.107,7.134v46.91c0,6.363,4.472,8.952,9.988,5.791l41-23.514c5.518-3.165,5.518-8.293,0-11.457Z" data-name="Path 18" transform="translate(-38.107 -35)" fill="#fff" class="color000 svgShape"></path></g></g></svg></g></svg>
+                          </div>
+                          <div class="controls">
+                            <span class="current-time">0:00</span>
+                            <div class="slider" data-direction="horizontal">
+                              <div class="progress">
+                                <div class="pin" id="progress-pin" data-method="rewind"></div>
+                              </div>
+                            </div>
+                            <span class="total-time">0:00</span>
+                          </div>
+                          <div class="volume">
+                            <div class="volume-btn">
+                              <svg id="SvgjsSvg1001" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M10.252 23h-3.21c-.612 0-1.157-.427-1.354-1.007l-1.591-4.993h4.615l.918 3.171c.178.552.512 1.041.962 1.408.758.618.271 1.421-.34 1.421zm9.286-21.902c-1.522.617-4.525 3.739-8.252 4.639-.802 1.099-1.285 2.882-1.285 4.846 0 1.861.438 3.553 1.165 4.662 3.941.942 6.303 3.996 8.309 4.671 2.201.742 4.529-3.468 4.525-9.422-.003-5.959-2.471-10.202-4.462-9.396zm1.704 15.472c-.719 1.656-1.987 1.685-2.72.001-.436-1.002-.731-2.772-.892-3.961h.38c1.174 0 2.125-.954 2.125-2.131s-.951-2.132-2.125-2.132h-.39c.16-1.21.538-2.947.974-3.89.764-1.652 1.941-1.68 2.72-.001 1.315 2.838 1.368 8.794-.072 12.114zm-12.435-1.57h-4.371c-2.452 0-4.436-2.047-4.436-4.5s1.984-4.5 4.436-4.5h4.444c-.561 1.3-.876 2.887-.876 4.594 0 1.627.29 3.141.803 4.406z" id="speaker" fill="#fff" class="color000 svgShape"></path></svg></g></svg>
+                          </div>
+                            <div class="volume-controls hidden">
+                              <div class="slider" data-direction="vertical">
+                                <div class="progress">
+                                  <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <audio crossorigin>
+                            <source src="{{song2.audio_file.url}}" type="audio/mpeg">
+                          </audio>
+                        </div>
+                      </div>
+                </span>
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="main-container">
+      <div class="content-wrapper">
+        <div class="content-section">
+          <div class="content-section-title">Music other people</div>
+          <div class="apps-card">
+            {% for song3 in Music %}
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input" checked />
+                <span class="checkbox-tile">
+                  
+                  <div class="app-card">
+                    
+                    <div class="c-player">
+                    
+                      <div class="c-player__picture">
+                        
+                        <div class="c-player__picture__images">
+        
+                          <img src="{{song3.image.url}}">
+                        </div>
+                      </div>
+                      
+                      <div class="c-player__details">
+                        <strong>{{song3.title}}</strong>
+                        <span>{{song3.artist}}</span>
+                      </div>
+                      
+                      <div class="c-player__ui">
+                        <div class="c-player__ui__prev">
+                        </div>
+                        <div class="o-controls">
+                          <div class="holder">
+                            <div class="audio green-audio-player big">
+                              <div class="play-pause-btn">
+                                <svg id="SvgjsSvg1001" width="70" height="70" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 55.127 61.182"  preserveAspectRatio="xMaxYMax meet"><g data-name="Group 38215" fill="#fff" class="color000 svgShape"><g data-name="play-button-arrowhead (1)" transform="translate(30 35)" fill="#fff" class="color000 svgShape"><path class="play-pause-icon" id="playPause2" d="M18.095,1.349C12.579-1.815,8.107.777,8.107,7.134v46.91c0,6.363,4.472,8.952,9.988,5.791l41-23.514c5.518-3.165,5.518-8.293,0-11.457Z" data-name="Path 18" transform="translate(-38.107 -35)" fill="#fff" class="color000 svgShape"></path></g></g></svg></g></svg>
+                                <div class="c-player__ui__play">
+                                </div>
+                                <div class="c-player__ui__pause">
+                                </div>
+                              </div>
+                              <div class="controls">
+                                <span class="current-time">0:00</span>
+                                <div class="slider" data-direction="horizontal">
+                                  <div class="progress">
+                                    <div class="pin" id="progress-pin" data-method="rewind"></div>
+                                  </div>
+                                </div>
+                                <span class="total-time">0:00</span>
+                              </div>
+                              <div class="volume">
+                                <div class="volume-btn">
+                                    <svg id="SvgjsSvg1001" width="70" height="70" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M10.252 23h-3.21c-.612 0-1.157-.427-1.354-1.007l-1.591-4.993h4.615l.918 3.171c.178.552.512 1.041.962 1.408.758.618.271 1.421-.34 1.421zm9.286-21.902c-1.522.617-4.525 3.739-8.252 4.639-.802 1.099-1.285 2.882-1.285 4.846 0 1.861.438 3.553 1.165 4.662 3.941.942 6.303 3.996 8.309 4.671 2.201.742 4.529-3.468 4.525-9.422-.003-5.959-2.471-10.202-4.462-9.396zm1.704 15.472c-.719 1.656-1.987 1.685-2.72.001-.436-1.002-.731-2.772-.892-3.961h.38c1.174 0 2.125-.954 2.125-2.131s-.951-2.132-2.125-2.132h-.39c.16-1.21.538-2.947.974-3.89.764-1.652 1.941-1.68 2.72-.001 1.315 2.838 1.368 8.794-.072 12.114zm-12.435-1.57h-4.371c-2.452 0-4.436-2.047-4.436-4.5s1.984-4.5 4.436-4.5h4.444c-.561 1.3-.876 2.887-.876 4.594 0 1.627.29 3.141.803 4.406z" id="speaker" fill="#fff" class="color000 svgShape"></path></svg></g></svg>
+                                </div>
+                                <div class="volume-controls hidden">
+                                  <div class="slider" data-direction="vertical">
+                                    <div class="progress">
+                                      <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <audio crossorigin>
+                                <source src="{{song3.audio_file.url}}" type="audio/mpeg">
+                                {% comment %} <source src="{% if song.audio_file %}{{song.audio_file.url}} {% else %} {{song.audio_link}} {% endif %}" type="audio/mpeg"> {% endcomment %}
+                              </audio>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="c-player__ui__next">
+              
+                        </div>
+                        <div class="c-player__ui__seek">
+                            <div class="c-player__ui__seek__seeker">
+                              <div></div>
+                            </div>
+                        </div>
+                        <div class="c-player__ui__dots">
+                          <div class="c-player__ui__dots__dot"></div>
+                          <div class="c-player__ui__dots__dot"></div>
+                          <div class="c-player__ui__dots__dot"></div>
+                          <div class="c-player__ui__dots__dot"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                      <defs>
+                        <filter id="goo">
+                          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9"
+                                          result="goo"/>
+                          <feBlend in="SourceGraphic" in2="goo"/>
+                        </filter>
+                      </defs>
+                      <symbol id="play">
+                        <path style="fill-rule:evenodd;clip-rule:evenodd;"
+                                d="M203.791,99.628L49.307,2.294c-4.567-2.719-10.238-2.266-14.521-2.266   c-17.132,0-17.056,13.227-17.056,16.578v198.94c0,2.833-0.075,16.579,17.056,16.579c4.283,0,9.955,0.451,14.521-2.267   l154.483-97.333c12.68-7.545,10.489-16.449,10.489-16.449S216.471,107.172,203.791,99.628z"/>
+                      </symbol>
+                      <symbol id="pause">
+                        <rect x="0" width="13" height="36" rx="2"></rect>
+                      </symbol>
+                    </svg>
+                  </div>
+                  
+                </span>
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-app"></div>
+  </div>
+</body>
+
+{% endblock content %}

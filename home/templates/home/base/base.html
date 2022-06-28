@@ -1,0 +1,48 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "home/style.css" %}">
+    <link rel="stylesheet" href="{% static "home/base.css" %}">
+    <link rel="stylesheet" href="{% static "authentication/style.css" %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'home/favicon.ico' %}"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <title>{% block title %}Music app{% endblock title %}</title>
+</head>
+<body>
+    {% comment %} DARK AND LIGHT THEME {% endcomment %}
+    <div class="dark-light">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+    </div>
+        
+    <div class="app">
+        <div class="header">
+            {% comment %} three dots in header {% endcomment %}
+            <div class="menu-circle"></div>
+            <div class="header-menu">
+                <a class="menu-link is-active" href="/">Home</a>
+                
+                    <a class="menu-link" href="{% url 'overlay' %}" name="overlay_music">
+                        <form action="overlay_music" method="post" name="overlay_music">
+                            {% csrf_token %}
+                            <button class="buttonn" name="overlay_music" id="overlay_music" type="submit">Connect</button>
+                        </form>
+                    </a>
+                {% comment %} <a class="menu-link" href="profile">Profile</a> {% endcomment %}
+                <a class="menu-link" href="register">Register</a>
+            </div>
+            <div class="header-profile">
+                <img class="profile-img" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2020%2F06%2F26%2Fblack-french-bulldog-park-149263574-2000.jpg" alt="">
+            </div>
+        </div>
+        {% block content %}
+        Music app
+        {% endblock content %}
+    </div>
+<script src="{% static "home/main.js" %}"></script>
+</body>
+</html>

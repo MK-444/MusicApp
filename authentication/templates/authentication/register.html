@@ -1,0 +1,26 @@
+{% extends 'home/base/base.html' %}
+
+{% block content %} 
+{% load crispy_forms_tags %}         
+
+<!--Register--> 
+<div class="">
+	<div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}                    
+		<button class="" type="submit">Register</button>
+		<div class="social">
+            <div class="go"><i class="fab fa-google"></i>  Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+	</form>
+	<p class="">If you already have an account, <a href="/login">login</a></p>
+</div>
+
+
+{% endblock %}
